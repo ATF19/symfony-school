@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+{% block body %}
+    <h1>Ajouter note</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Ajouter" class="btn btn-primary" /><br /><br />
+    {{ form_end(form) }}
+            <a href="{{ path('note_index') }}" class="btn btn-warning">Back to the list</a>
+{% endblock %}

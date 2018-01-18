@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+
+{% block body %}
+<div class="container text-center">
+<h1>Connecter</h1>
+    <form method="POST" action="{{ path('user_login') }}">
+      Login: <input type="text" placeholder="Login" name="login" /><br /><br />
+      Password: <input type="password" placeholder="password" name="password" /> <br /><br />
+      {%if(message is defined)%}
+        {{message}} <br /><br />
+      {%endif%}
+      <input type="submit" value="Connecter" class="btn btn-primary" />
+      <input type="reset" value="Annuler" class="btn btn-warning" />
+    </form>
+
+    <br/> <br/><br/>
+<a href="{{ path('user_new') }}" class="btn btn-primary">S'inscrire</a>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+
+{% block body %}
+    <h1>Note</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ note.id }}</td>
+            </tr>
+            <tr>
+                <th>Etudiant</th>
+                <td>{{ note.student.nom }} {{ note.student.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Matiere</th>
+                <td>{{ note.matiere.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ note.type }}</td>
+            </tr>
+            <tr>
+                <th>Semestre</th>
+                <td>{{ note.semestre }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ note.note }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <a href="{{ path('note_index') }}" class="btn btn-primary">Retourner</a><br /><br />
+            <a href="{{ path('note_edit', { 'id': note.id }) }}" class="btn btn-warning">Modifier</a><br /><br />
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+{% endblock %}

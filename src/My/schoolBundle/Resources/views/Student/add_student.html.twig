@@ -1,0 +1,81 @@
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+
+{% block body %}
+    <h1 align ="center">Ajouter Eleve</h1><hr>
+ <form action="" method="post" {{ form_enctype(f) }}>
+
+<table class="table">
+<tr>
+    <td>{{ form_label(f.nom) }}</td>
+    <td>{{ form_widget(f.nom) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.prenom) }}</td>
+    <td>{{ form_widget(f.prenom) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.genre) }}</td>
+    <td>{{ form_widget(f.genre) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.Classe) }}</td>
+    <td>{{ form_widget(f.Classe) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.date) }}</td>
+    <td>{{ form_widget(f.date) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.lieu) }}</td>
+    <td>{{ form_widget(f.lieu) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.adresse) }}</td>
+    <td>{{ form_widget(f.adresse) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.nomTuteur) }}</td>
+    <td>{{ form_widget(f.nomTuteur) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.profition) }}</td>
+    <td>{{ form_widget(f.profition) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.tel) }}</td>
+    <td>{{ form_widget(f.tel) }}</td>
+</tr>
+<tr>
+    <td>{{ form_label(f.email) }}</td>
+    <td>{{ form_widget(f.email) }}</td>
+</tr>
+
+<tr>
+    <td>{{ form_label(f.obs) }}</td>
+    <td>{{ form_widget(f.obs) }}</td>
+</tr>
+
+<tr>
+    <td>Image</td>
+    <td>{{ form_widget(f.file) }}</td>
+</tr>
+
+{{ form_widget(f) }}
+<tr>
+    <td><input type="submit" value ="Valider" class="btn btn-primary"/></td>
+</tr>
+</table>
+       <ul>
+        <li>
+            <a href="{{ path('student_list') }}">
+                Student List
+            </a>
+        </li>
+    </ul>
+</form>
+{% endblock %}

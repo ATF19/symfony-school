@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+
+{% block body -%}
+<div class="container">
+    <h1>Classe</h1>
+
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cl in enss %}
+            <tr>
+                <td>{{ cl.id }}</td>
+                <td>{{ cl.libelle }}</td>
+                <td class="col-md-1"><a class="btn btn-success" href="{{ path('edit_classe', { 'id': cl.id }) }}">Modifier</a></td>
+                <td class="col-md-1"><a class="btn btn-danger" href="{{ path('remove_classe', { 'id': cl.id }) }}"><i class="glyphicon glyphicon-trash"></i> Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            <a href="{{ path('classe_new') }}" class="btn btn-primary">
+                Ajouter
+            </a>
+    </div>
+    {% endblock %}

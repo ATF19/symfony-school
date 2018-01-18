@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+{% block body %}
+    <h1>Classe list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classe in classes %}
+            <tr>
+                <td><a href="{{ path('classe_show', { 'id': classe.id }) }}">{{ classe.id }}</a></td>
+                <td>{{ classe.libelle }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('classe_show', { 'id': classe.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('classe_edit', { 'id': classe.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('classe_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

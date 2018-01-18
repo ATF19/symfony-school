@@ -1,0 +1,41 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ecoleEcoleBundle:Enseignant:listEnseignant{% endblock %}
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>Specialites</h1>
+<form>
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>libelle</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for st in enss %}
+            <tr>
+                <td>{{ st.id }}</td>
+                <td>{{ st.libelle }}</td>
+                <td class="col-md-1"><a class="btn btn-success" href="{{ path('edit_specialite', { 'id': st.id }) }}">Modifier</a></td>
+                <td class="col-md-1"><a class="btn btn-danger" href="{{ path('remove_specialite', { 'id': st.id }) }}"><i class="glyphicon glyphicon-trash"></i> Supprimer</a></td>
+                </tr>
+{% else %}
+<tr><td>Aucun Enseignnat n''a été trouvé.</td></tr>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            <a class="btn btn-success" href="{{ path('Specialite_new') }}">Ajouter</a>
+
+</form>
+</div>
+    {% endblock %}

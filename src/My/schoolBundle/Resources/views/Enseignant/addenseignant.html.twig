@@ -1,0 +1,129 @@
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+{% block body %}
+<h1>Ajouter enseignant</h1>
+
+
+
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+<form action="" method="post" {{ form_enctype(f) }} >
+<div class ="container">
+        <div class ="navbar navbar-inverse">
+            <div class ="navbar-brand">
+                MajEnseignant page
+            </div>
+        </div>
+<div class ="row">
+<div class ="form-group">
+    <div class ="col-sm-10">
+         <label>{{ form_label(f.nom) }}</label>
+    {{ form_widget(f.nom,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class ="form-group">
+
+        <div class ="col-sm-10">
+             <label>{{ form_label(f.prenom) }}</label>
+ {{ form_widget(f.prenom,{attr:{'class':'form-control'}}) }}
+   </div>
+</div>
+    <div class ="form-group">
+
+    <div class ="col-sm-10">
+         <label>{{ form_label(f.adresse) }}</label>
+   {{ form_widget(f.adresse,{attr:{'class':'form-control'}}) }}
+    </div>
+    </div>
+ <div class ="dropdown">
+
+      <div class ="col-sm-10">
+          <label>{{ form_label(f.genre) }}</label>
+   {{ form_widget(f.genre,{attr:{'class':'form-control'}}) }}
+    </div>
+ </div>
+<div class ="dropdown">
+
+         <div class ="col-sm-10">
+             <label>{{ form_label(f.Specialite) }}</label>
+   {{ form_widget(f.Specialite,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class ="form-group">
+
+        <div class ="col-sm-10">
+             <label>{{ form_label(f.date) }}</label>
+   {{ form_widget(f.date,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class ="form-group">
+
+        <div class ="col-sm-10">
+               <label>{{ form_label(f.lieu) }}</label>
+   {{ form_widget(f.lieu,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class ="form-group">
+
+       <div class ="col-sm-10">
+                <label>{{ form_label(f.cin) }}</label>
+   {{ form_widget(f.cin,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+   <div class ="form-group">
+       <div class ="col-sm-10">
+
+   <label>{{ form_label(f.datecin) }}</label>
+   {{ form_widget(f.datecin,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class ="form-group">
+
+       <div class ="col-sm-10">
+                <label>{{ form_label(f.tel) }}</label>
+   {{ form_widget(f.tel,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class ="form-group">
+
+       <div class ="col-sm-10">
+            <label>{{ form_label(f.email) }}</label>
+   {{ form_widget(f.email,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+    <div class ="form-group">
+
+           <div class ="col-sm-10">
+               <label>{{ form_label(f.obs) }}</label>
+   {{ form_widget(f.obs,{attr:{'class':'form-control'}}) }}
+    </div>
+    </div>
+<div>
+
+      <div class = "form-group">
+          <div class ="col-sm-10">
+           <label>Image</label>
+           {{ form_widget(f.file,{attr:{'class':'form-control'}}) }}
+    </div>
+</div>
+    <div class ="form-group">
+    <div>
+    <button type="submit" Class ="btn btn-primary">
+        <span class ="glyphicon-plus"/>Valider
+    </button>
+    </div>
+    </div>
+ <div class ="form-group">
+  <div class ="col-sm-10">
+ <p><a href="{{ path('list_enseignant') }} ">Retour à la liste des Enseignants</a></p>
+  </div>
+</div>
+</div>
+     {{ form_widget(f) }}
+</form>
+{% endblock %}

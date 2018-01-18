@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+      <nav class="navbar navbar-inverse" style="background-color:#2c3e50;">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li><a href="http://localhost:8000/listStudent">Eleves</a></li>
+            <li><a href="http://localhost:8000/listenseignant">Enseignants</a></li>
+            <li><a href="http://localhost:8000/listClasse">Classes</a></li>
+            <li><a href="http://localhost:8000/listSpecialite">Specialites</a></li>
+            <li><a href="http://localhost:8000/matiere">Matieres</a></li>
+            <li><a href="http://localhost:8000/coefficient">Coefficients</a></li>
+            <li><a href="http://localhost:8000/note">Notes</a></li>
+
+            {% if app.session.get('login') == NULL%}
+              <li><a href="http://localhost:8000/user">Connecter</a></li>
+    				{% else %}
+              <li><a href="http://localhost:8000/user/logout">Deconnecter</a></li>
+    				{% endif %}
+            <li>
+                <div class="form-inline" style="padding-top: 10px">
+                  <select id="select">
+                    <option value="etudiant">Etudiant</option>
+                    <option value="enseignant">Enseignant</option>
+                  </select>
+                  <input  type="text" id="nom" name="nom" placeholder="recherche" />
+                  <button class="btn btn-primary" style="padding: 5px" onclick="recherche()">Rechercher</button>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+        <div class="container">
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+        <script>
+          function recherche() {
+            if(document.getElementById("select").value == "etudiant")
+              window.location = "http://localhost:8000/rechStudent?nom="+document.getElementById("nom").value;
+            else
+              window.location = "http://localhost:8000/rechEnseignant?nom="+document.getElementById("nom").value;
+          }
+        </script>
+      </div>
+    </body>
+</html>

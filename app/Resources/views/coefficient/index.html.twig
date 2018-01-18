@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+                   <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.css') }}">
+                           <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
+                           <script src="{{ asset('bundles/js/bootstrap.js') }}"></script>
+                {% endblock %}
+{% block body %}
+    <h1>Coefficient list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Coef</th>
+                <th>Matiere</th>
+                <th>Classe</th>
+                <th>Afficher</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for coefficient in coefficients %}
+            <tr>
+                <td><a href="{{ path('coefficient_show', { 'id': coefficient.id }) }}">{{ coefficient.id }}</a></td>
+                <td>{{ coefficient.coef }}</td>
+                <td>{{ coefficient.matiere.libelle }}</td>
+                <td>{{ coefficient.classe.libelle }}</td>
+                <td><a href="{{ path('coefficient_show', { 'id': coefficient.id }) }}" class="btn btn-primary">show</a></td>
+                <td><a href="{{ path('coefficient_edit', { 'id': coefficient.id }) }}" class="btn btn-warning">edit</a></td>
+                <td>
+                    <a href="{{ path('coefficient_delete1', { 'id': coefficient.id }) }}" class="btn btn-danger">supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+            <a href="{{ path('coefficient_new') }}" class="btn btn-primary">Ajouter</a>
+{% endblock %}
